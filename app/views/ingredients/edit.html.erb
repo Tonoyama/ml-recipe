@@ -1,0 +1,59 @@
+<div class="container" style="padding-bottom: 100px;">
+	<span class="form-title">Edit Ingredient</span>
+	<div class="row" style="margin-top: 30px">
+		<div class="col-lg-6 col-12">
+			<p style="border-bottom: 1px solid silver; font-size: 20px" >レシピ
+				<%= link_to "編集", edit_recipe_path(@recipe), class:"btn btn-warning btn-sm",
+					style:"margin-bottom:5px", data: {"turbolinks" => false} %>
+			</p>
+			<% if flash[:create] %>
+			 	<div class="good-flash"><i class="fas fa-check-circle"></i>
+			 		<%= flash[:create]%>
+			 	</div>
+			<% end %>
+			<div class="row">
+				<div class="col-lg-3 col-3"><p>レシピ名</p></div>
+				<div class="col-lg-9 col-9"><p><%= @recipe.title %></p></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-3"><p>紹介文</p></div>
+				<div class="col-lg-9 col-9"><p><%= @recipe.introduction %></p></div>
+			</div>
+
+			<div class="row" style="margin-top:30px;">
+			<div class="col-lg-12 col-12">
+				<p style="border-bottom: 1px solid silver; font-size: 20px" >作り方
+					<%= link_to "編集", edit_recipe_cookings_path(@recipe), class:"btn btn-warning btn-sm",
+						style:"margin-bottom:5px", data: {"turbolinks" => false} %>
+				</p>
+				<% @recipe.cookings.each do |cooking| %>
+				<div class="row" style="margin-bottom: 10px">
+					<div class="col-lg-1 col-1 font-md-sp" style="text-align: right"  >
+						</div>
+						<div class="col-lg-11 col-11 font-md-sp">
+							<%= cooking.content %>
+						</div>
+					</div>
+				<% end %>
+				</div>
+			</div>
+
+			<div style="text-align: center; margin-top: 30px;">
+
+				<% if @recipe.cookings.empty?  %>
+					<%= link_to "保存する",edit_recipe_cookings_path(@recipe), class:"btn btn-warning" %>
+				<% elsif @recipe.recipe_status == "完成" or @recipe.recipe_status == "未入力あり" or
+						 @recipe.recipe_status == "準備中" %>
+					<%= link_to "戻る",recipe_path(@recipe), class:"btn btn-warning" %>
+				<% else %>
+					<%= form_with(url: recipe_path(@recipe),remote: true,  method: :patch) do |f| %>
+						<%= f.hidden_field :recipe_status, value:"完成" %>
+						<%= f.submit "レシピを投稿する",class:"btn btn-warning",
+							style:"padding: 5px 30px"  %>
+					<% end %>
+				<% end %>
+			</div>
+
+		</div>
+	</div>
+</div>

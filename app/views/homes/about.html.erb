@@ -1,0 +1,111 @@
+<div class="container" style="padding-bottom: 100px">
+	<span class="form-title"><i class="fas fa-question-circle"></i> About</span>
+	<div class="row">
+		<div class="col-lg-12 col-xs-12">
+			<ul style="margin-left: 20px">
+				<li class="font-md" style="margin-top: 30px">
+						機械学習をレシピサイトのようにもっと手軽に、身近に
+						『ML recipe』は、皆様の機械学習ライフをみじか
+				</li>
+				<li class="font-md" style="margin-top: 30px">
+					主に野菜の宅配サービスと、ユーザーによるレシピの投稿、共有を<br class="br-sp"><br class="br-tb">活用いただけますので<br-pc>わざわざ買い物に行きながら<br class="br-pc">献立を<br class="br-tb">考えるのではなく、自宅のキッチンから食べたいレシピとその食材を<br class="br-tb">購入したり、<br class="br-sp"><br class="br-pc">逆に食べたい食材からレシピを探すことで
+					より色々な料理や野菜を<br class="br-sp">楽しんでいただけます。
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row about-content">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-6">
+			<span class="form-title font-md">
+				<i class="fas fa-utensils"></i> Recipe
+			</span>
+			<ul style="margin-left: 20px" class="font-md-sp">
+				<li>
+					ユーザー登録なしでも、他ユーザーのレシピやコメントをみたり、<br>
+					キーワード検索やレシピのタグ機能から自分の見たいレシピを<br>
+					探すことができます
+				</li>
+				<li style="margin: 10px 0">
+					登録をすると、自分の作ったレシピの共有や、<br>
+					他のレシピにコメントやいいねをすることもできます
+				</li>
+				<li>
+					途中まで作成したレシピは、マイページより一覧で確認できます
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-4 about-image">
+			<%= link_to recipes_path do %>
+				<div class="top-recipe" style="width: 100%; height:250px;"></div>
+			<% end %>
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+
+	<div class="row about-content">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-4 about-image">
+			<%= link_to products_path do %>
+				<div class="top-vegetable" style="width: 100%; height:250px;"></div>
+			<% end %>
+		</div>
+		<div class="col-lg-6">
+			<span class="form-title font-md">
+				<i class="fas fa-seedling"></i> Vegetable
+			</span>
+			<ul style="margin-left: 20px" class="font-md-sp">
+				<li>
+					定番から季節の野菜まで、産地直送でお届けします。<br>
+					(ご利用にはお名前・住所などの情報の入力が必要となります)
+				</li>
+				<li style="margin: 10px 0">
+					ジャンルやキーワードでの検索もできますので、<br>
+					日頃スーパーでは買わない野菜も見つかるかもしれません<br>
+					また、季節の野菜セットなどのお得な詰め合わせ品もございます
+				</li>
+				<li>
+					他ユーザーが購入した商品のレビューをみたり、自分が
+					買った商品をレビューすることもできます。
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+
+	<div class="row about-content">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-6">
+			<span class="form-title font-md">
+				<i class="fas fa-user"></i> My Page
+			</span>
+			<ul style="margin-left: 20px" class="font-md-sp">
+				<li>
+					自分が投稿したレシピや下書き段階のレシピなどの確認ができます。<br>
+					また、いいねをしたレシピの一覧も確認できます。
+				</li>
+				<li style="margin: 10px 0">
+					好みのレシピを投稿するユーザーをフォローすることで、<br>
+					より簡単にその人のレシピがチェックできます。
+				</li>
+				<li>
+					注文履歴にて、自分がこれまでどんな食材をいつ注文してきたかを<br>
+					確認できます。
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-4 about-image">
+			<% if customer_signed_in? %>
+				<%= link_to customer_path(current_customer) do %>
+					<div class="top-about" style="width: 100%; height:250px;"></div>
+				<% end %>
+			<% else %>
+				<%= link_to new_customer_session_path do %>
+					<div class="top-about" style="width: 100%; height:250px;"></div>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+</div>

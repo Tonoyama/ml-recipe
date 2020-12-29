@@ -1,0 +1,141 @@
+<div class="container" style="padding-bottom: 100px;">
+	<span class="form-title">商品詳細</span>
+  <span style="margin-left: 10px;font-size: 15px;"><%= link_to ">back", admins_products_path %></span>
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-lg-4" style="text-align: center">
+          <%= attachment_image_tag @product, :product_image, fallback: "top_vegetable.jpg",
+            size:"300x200" %>
+      </div>
+      <div class="col-lg-6 offset-lg-1">
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-lg-3">
+              <span>商品名</span>
+            </div>
+            <div class="col-lg-9">
+              <%= @product.name %>
+            </div>
+          </div>
+
+          <div class="row" style="margin-bottom: 10px;">
+              <div class="col-lg-3">
+                <span>レビュー</span>
+              </div>
+          <% if @product.reviews.present? %>
+              <div class="col-lg-9">
+                平均評価：<%= @product.reviews.average(:rate).round(1) %>点/
+                全<%= @product.reviews.count %>件のレビュー
+              </div>
+            <% else %>
+              <p>まだ評価はありません</p>
+            <% end %>
+          </div>
+
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-lg-3">
+              <p>商品説明　</p>
+            </div>
+           <div class="col-lg-9" >
+             <%= @product.introduction %>
+           </div>
+          </div>
+
+            <div class="row" style="margin-bottom: 10px;">
+              <div class="col-lg-3">
+                <p>ジャンル　</p>
+              </div>
+              <div class="col-lg-9">
+                  <%= @product.genre.name %>
+              </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 10px;">
+              <div class="col-lg-4">
+                <p>税込価格(税抜価格)</p>
+              </div>
+              <div class="col-lg-8">
+                <%= (@product.price * 1.1).to_i %> (<%= @product.price %>)円
+              </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 10px;">
+              <div class="col-lg-4">
+                <p>販売ステータス</p>
+              </div>
+              <div class="col-lg-8">
+                  <%= @product.is_active %>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div>
+      <%= link_to edit_admins_product_path(params[:id]) do %>
+        <span class= "btn btn-warning", style="padding: 5px 30px;float: right">編集</span>
+      <% end %>
+    </div>
+  <!-- レビュー一覧 -->
+  <div class="row" style="margin-top: 30px;">
+    <div class="col-lg-10" style="margin-top: 30px">
+      <span class="form-title">レビュー</span>
+      <% @product.reviews.each do |review| %>
+        <div class="row" style="margin-top: 10px">
+          <div class="col-lg-4" style="text-align: center">
+            <%= link_to admins_customer_path(review.customer) do %>
+              <%= attachment_image_tag review.customer, :profile_image, format:"jpg",
+                fallback:"logo.jpg", class:"comment-image" %>
+            <% end %>
+          </div>
+          <div class="col-lg-6">
+            <p>
+              <!-- 星を表示 -->
+              <div id="star-rate-<%= review.id %>"></div>
+                <script>
+                  document.addEventListener("turbolinks:before-cache", function() {
+                    $('#star-rate-<%= review.id %>').empty()
+                    });
+                    $('#star-rate-<%= review.id %>').raty({
+                      size: 36,
+                      starOff:  '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      half: true,
+                      score: <%= review.rate %>,
+                      readOnly: true,
+                    });
+                </script>
+            </p>
+            <span><%= review.content %></span><br>
+            <% if review.score < 0  %>
+              <span style="color: red">
+                <%= review.score %>：bad
+              </span>
+            <% else %>
+              <span style="color: green">
+                <%= review.score %>：good
+              </span>
+            <% end %>
+          </div>
+          <div class="col-lg-2"></div>
+        </div>
+        <div class="row" style="border-bottom: 1px silver solid; margin: 0 10px">
+          <div class="col-lg-12">
+            <span style="float: right">
+              <%= link_to admins_customer_path(review.customer) do %>
+                <i class="fas fa-user" style="color: #F96167"></i>
+                <%= review.customer.account_name %>
+              <% end %>
+              <span style="margin:0 10px">
+                <i class="fas fa-calendar-alt", style="color: #F96167"></i>
+                <%= review.created_at.strftime('%Y/%m/%d')%>
+              </span>
+                <%= link_to product_review_path(@product, review),method: :delete,
+                  data: {confirm: "本当に削除してもよろしいですか？"}, remote: true do %>
+                  <i class="fas fa-trash"></i>削除
+              <% end %>
+            </span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container" style="padding-bottom: 100px;">
+	<div class="row">
+		<div class="col-lg-10 offset-lg-1">
+			<span class="form-title"><span style="font-family: none"><%= @product_title %></span></span>
+			<% if params[:q] %>
+				<span style="margin-left: 10px; font-size: 15px"><%= link_to ">back", :back %></span>
+			<% end %>
+			<span style="float: right">
+				<%= search_form_for @search, url: admins_products_path do |f| %>
+					<%= f.search_field :name_or_introduction_or_genre_name_cont, class:"fa", placeholder: "\uf002 キーワード" %>
+					<%= f.submit "検索" %>
+				<% end %>
+				<%= link_to "新規作成", new_admins_product_path,
+					class:"btn btn-warning", style:"margin:10px 0" %>
+			</span>
+			<table class="table table-bordered" style="margin-top: 30px;">
+				<tr class="table-active">
+					<th>商品id</th>
+					<th>商品名</th>
+					<th>税抜き価格</th>
+					<th>ジャンル</th>
+					<th>ステータス</th>
+					<th>レビュー件数</th>
+					<th>評価</th>
+				</tr>
+				<% @products.each do |product| %>
+				<tr>
+					<td><%= product.id %></td>
+					<td>
+						<%= link_to admins_product_path(product) do %>
+							<%= product.name %>
+						<% end %>
+					</td>
+					<td><%= product.price %>円</td>
+					<td><%= product.genre.name %></td>
+					<td><%= product.is_active %></td>
+					<td><%= product.reviews.count %>件</td>
+					<td>
+						<% if product.reviews.present? %>
+							<%= product.reviews.average(:rate).round(1) %>点
+						<% else %>
+							未評価
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</table>
+			<%= paginate @products %>
+		</div>
+	</div>
+</div>

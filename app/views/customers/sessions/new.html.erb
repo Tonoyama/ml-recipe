@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <h2 style="padding-bottom: 20px"><span class="form-title">Log in</span></h2>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <% if flash[:alert] %>
+          <div class="bad-flash"><i class="fas fa-exclamation-circle"></i>
+            <%= flash[:alert]%>
+          </div>
+        <% end %>
+          <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-4">
+              <p>メールアドレス</p>
+            </div>
+            <div class="col-lg-4">
+               <%= f.email_field :email, autocomplete: "off",style:"width:100%" %>
+            </div>
+            <div class="col-lg-2"></div>
+          </div>
+
+          <div class="row">
+              <div class="col-lg-2"></div>
+            <div class="col-lg-4">
+              <p>パスワード</p>
+            </div>
+            <div class="col-lg-4">
+              <%= f.password_field :password, autocomplete: "off",style:"width:100%" %>
+            </div>
+              <div class="col-lg-2"></div>
+          </div>
+
+        　 <div class="row">
+            <div class="col-lg-12", style="text-align:center;">
+              <%= f.hidden_field :is_avtive, value: "有効" %>
+              <%= f.submit "ログイン" ,class:"btn btn-warning btn-lg",
+                style:"padding:5px 30px;margin-bottom:30px;" %>
+            </div>
+          </div>
+        <% end %>
+        <p style="text-align:center;">まだ新規登録していない方は、
+          <%= link_to "こちら", new_customer_registration_path, style:"color:#F96167;" %>より新規登録を行ってください
+        </p>
+        <p style="text-align:center;">管理者ログインは、
+          <%= link_to "こちら", new_admin_session_path, style:"color:#F96167;" %>より行ってください
+        </p>
+    </div>
+  </div>
+</div>

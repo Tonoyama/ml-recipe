@@ -1,0 +1,238 @@
+<div class="container" style="padding-bottom: 100px;">
+	<div class="row">
+		<div class="col-lg-6">
+			<span class="form-title"><i class="fas fa-seedling"></i>Vegetable</span>
+			<span style="margin-left: 10px;font-size: 15px;"><%= link_to ">back", products_path %></span>
+			<%= attachment_image_tag @product, :product_image, format:"jpg",
+				fallback:"top_vegetable.jpg", class:"product-show",style:"margin-top:20px" %>
+		</div>
+		<div class="col-lg-6", style="padding-top: 80px">
+			<span style="font-size: 20px;">
+				<i class="fas fa-seedling fa-lg"></i><%= @product.name %>
+			</span>
+			<div style="margin: 10px 0;border-bottom: 1px solid #F96167;">
+				<% if @product.reviews.present? %>
+					<div id="rate-average-<%= @product.id %>"></div>
+					    <script>
+		                  document.addEventListener("turbolinks:before-cache", function() {
+		                    $('#rate-average-<%= @product.id %>').empty()
+		                    });
+				          $('#rate-average-<%= @product.id %>').raty({
+				            size: 36,
+				            starOff:  '<%= asset_path('star-off.png') %>',
+				            starOn : '<%= asset_path('star-on.png') %>',
+				            starHalf: '<%= asset_path('star-half.png') %>',
+				            half: true,
+				            score: <%= @product.reviews.average(:rate) %>,
+				            readOnly: true,
+				        	});
+					    </script>
+					<span class="font-md-sp">
+						平均評価：<%= @product.reviews.average(:rate).round(1) %>点/
+						全<%= @product.reviews.count %>件のレビュー
+					</span>
+				<% else %>
+					<p style="font-size: 12px">(まだ評価はありません)</p>
+				<% end %>
+			</div>
+			<p style="font-size: 18px;padding: 15px 0 30px 0"><%= @product.introduction %></p>
+			<p class="btn btn-warning btn-sm">
+				<%= link_to products_path(genre_id: @product.genre.id) do %>
+					<%= @product.genre.name %>
+				<% end %>
+			</p>
+			<span>
+				<p><%= (@product.price * 1.1).to_i %>円(税込)</p>
+			</span>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="col-auto" style="margin: 0 0 0 auto;">
+			<% if flash[:notice] %>
+			 	<div class="bad-flash">
+			 		<i class="fas fa-exclamation-circle"> <%= flash[:notice]%></i>
+			 	</div>
+			<% end %>
+			<% if customer_signed_in? %>
+				<%= form_with model: @cart_item, url: customers_cart_items_path do |f| %>
+					<div class="field">
+						<%= f.select :count, [["1","1"],["2","2"],["3","3"],["4","4"],["5","5"], ["6","6"],["7","7"],["8","8"],["9","9"],["10","10"]],
+								include_blank: "個数選択" %>
+						<%= f.hidden_field :product_id, :value => @product.id %>
+						<%= f.submit "購入する", class:"btn btn-warning submit-btn" %>
+					</div>
+					<span style="font-size: 10px;float: right">(1度に10個までご購入いただけます)</span>
+				<% end %>
+			<% else %>
+				<p>
+					購入やレビューの投稿には
+					<%= link_to "新規登録", new_customer_registration_path %>、または
+					<%= link_to "ログイン", new_customer_session_path %>
+					が必要です
+				</p>
+			<% end %>
+		</div>
+	</div>
+ 	<div class="row" style="margin-top: 30px;">
+		<div class="col-lg-12" style="margin-top: 30px">
+			<span class="form-title">Reviews</span>
+			<% @product.reviews.each do |review| %>
+				<div class="row" style="margin-top: 10px">
+					<div class="col-lg-4 col-4" style="text-align: center">
+						<%= link_to customer_path(review.customer) do %>
+							<%= attachment_image_tag review.customer, :profile_image, format:"jpg",
+								fallback:"logo.jpg", class:"comment-image" %>
+						<% end %>
+					</div>
+					<div class="col-lg-6 col-8">
+						<p>
+							<div id="star-rate-<%= review.id %>"></div>
+						    <script>
+			                  document.addEventListener("turbolinks:before-cache", function() {
+			                    $('#star-rate-<%= review.id %>').empty()
+			                    });
+					          $('#star-rate-<%= review.id %>').raty({
+					            size: 36,
+					            starOff:  '<%= asset_path('star-off.png') %>',
+					            starOn : '<%= asset_path('star-on.png') %>',
+					            starHalf: '<%= asset_path('star-half.png') %>',
+					            half: true,
+					            score: <%= review.rate %>,
+					            readOnly: true,
+					        	});
+						    </script>
+						</p>
+						<span class="font-md-sp"><%= review.content %></span>
+					</div>
+					<div class="col-lg-2"></div>
+				</div>
+				<div class="row" style="border-bottom: 1px silver solid; margin: 0 10px">
+					<div class="col-lg-12">
+						<span style="float: right">
+							<%= link_to customer_path(review.customer) do %>
+								<i class="fas fa-user" style="color: #F96167"></i>
+								<%= review.customer.account_name %>
+							<% end %>
+							<span class="font-md-sp" style="margin:0 10px">
+								<i class="fas fa-calendar-alt", style="color: #F96167"></i>
+								<%= review.created_at.strftime('%Y/%m/%d')%>
+							</span>
+							<% if review.customer == current_customer %>
+								<%= link_to product_review_path(@product, review),method: :delete,
+									data: {confirm: "本当に削除してもよろしいですか？"}, remote: true do %>
+									<i class="fas fa-trash"></i>削除
+								<% end %>
+							<% end %>
+						</span>
+					</div>
+				</div>
+			<% end %>
+			<% if flash[:review_create] %>
+			 	<div class="good-flash"><i class="fas fa-check-circle"></i>
+			 		<%= flash[:review_create]%>
+			 	</div>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="row" style="margin-top:30px;">
+		<div class="col-lg-12">
+			<% if customer_signed_in? %>
+			<span class="form-title" style="font-size: 20px">New Review</span>
+				<% if current_customer.reviewing?(@product) %>
+					<p style="margin-top: 10px">
+						レビューの投稿ありがとうございました。<br>
+						レビューは商品につき1人1回のみとなっています。
+					</p>
+				<% elsif @ordered.blank? %>
+					<p style="margin-top: 10px">
+						レビューは当商品を購入後に投稿いただけます。<br>
+						ぜひご購入し、感想をお寄せください。
+					</p>
+				<% else %>
+					<% if flash[:error_messages].present? %>
+						<ul>
+	                        <% flash[:error_messages].each do |message| %>
+						        <div class="bad-flash"><i class="fas fa-exclamation-circle"></i>
+	                  				<%= message %>
+	                  			</div>
+						     <% end %>
+			            </ul>
+		           	<% end %>
+					<%= form_with model:[@product, @review] do |f| %>
+					    <div id="star">
+					        <%= f.label :rate,  "評価" %>
+					        <%= f.hidden_field :rate, id: :review_star %>
+					    </div>
+					    	<script>
+			                  document.addEventListener("turbolinks:before-cache", function() {
+			                    $('#star').empty()
+			                    });
+					          $('#star').raty({
+					            size: 36,
+					            starOff:  '<%= asset_path('star-off.png') %>',
+					            starOn : '<%= asset_path('star-on.png') %>',
+					            starHalf: '<%= asset_path('star-half.png') %>',
+					            half: true,
+   			 					scoreName: "review[rate]",
+					        	});
+						    </script>
+						<%= f.text_area :content, rows:"2", autocomplete: "off", style:"width:80%;",
+							placeholder:"食べた感想など" %>
+							<br>
+						<%= f.hidden_field :product_id, value: @product.id %>
+						<%= f.submit "レビュー", class:"btn btn-warning submit-btn" %>
+					<% end %>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+	<% if @recipes.present? %>
+		<div style="margin-top: 80px;padding-top: 20px; border-top: 1px solid #F96167">
+			<span class="form-title" style="font-size: 25px;">Recommend</span>
+			<div class="recipe-contents" style="margin-top: 20px;">
+				<% @recipes.shuffle.first(6).each do |recipe| %>
+					<div class="recipe-content">
+						<%= link_to recipe_path(recipe), class:"recipe-select" do %>
+						<div style="position: relative;">
+							<%= attachment_image_tag recipe, :recipe_image, format:"jpg",
+								fallback:"top_recipe.jpg", class:"recipe-image" %>
+							<span style="font-size:12px;margin-top: 5px" class="hidden-sp recipe-intro">
+								<%= recipe.introduction.truncate(40) %>
+							</span>
+						</div>
+							<span style="font-size: 18px;">
+								<i class="fas fa-utensils font-md-sp" style="margin-top: 5px;">
+									<%= recipe.title.truncate(15) %>
+								</i>
+							</span>
+						<% end %>
+							<span class="hidden-sp hidden-tb">
+								<%= link_to customer_path(recipe.customer) do %>
+									<i class="fas fa-user" style="color: #F96167"></i>
+										<span style="color: black"><%= recipe.customer.account_name %>
+										</span>
+								<% end %>
+								<span style="margin: 0 30px;">
+									<i class="fas fa-comment" style="color: #F96167"></i>
+										<span style="color: black"><%= recipe.comments.count %>件</span>
+								</span>
+								<% if customer_signed_in? %>
+									<span class="favorite_<%= recipe.id %>" >
+										<%= render "recipes/favorite", recipe: recipe %>
+									</span>
+								<% else %>
+										<i class="fas fa-heart" style="color: #F96167"></i>
+										<span style="color:black">
+											<%= recipe.favorites.count %>
+										</span>
+								<% end %>
+								<i class="fas fa-paw", style="color: #F96167; margin-left:30px;"></i>
+								<%= recipe.impressionist_count %>
+							</span>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>

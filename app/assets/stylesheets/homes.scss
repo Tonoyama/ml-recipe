@@ -1,0 +1,169 @@
+// Place all the styles related to the homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-images{
+	width: 100%;
+	margin: 0 auto;
+	height: 500px;
+}
+
+.top1{
+	background-image: image-url("top_page1.jpg");
+	background-position: 0 -50px;
+	display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.top2{
+	background-image: image-url("top_page2.jpg");
+	background-position: 0;
+	display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.top3{
+	background-image: image-url("top_page3.jpg");
+	background-position: 0px -50px;
+	display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.top4{
+	background-image: image-url("top_page4.jpg");
+	background-position: center;
+	display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.top5{
+	background-image: image-url("top_page5.jpg");
+	background-position: center;
+	display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+
+.top-image-text{
+    font-size: 70px;
+    color: white;
+    margin-bottom: 50px;
+    font-family: impact
+}
+
+.top-contents{
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 100px;
+}
+
+.top-content{
+	width: 333px;
+	display: flex;
+	height: 200px;
+}
+
+.top-content-text{
+    text-align: center;
+    margin: auto auto;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: impact;
+    text-shadow: 1px 1px black;
+
+	span{
+	color: white;
+	}
+}
+
+.top-about{
+	background-image: image-url("logo.jpg");
+	background-size: cover;
+}
+
+.top-recipe{
+	background-image: image-url("top_recipe.jpg");
+	background-size: cover;
+}
+
+.top-vegetable{
+	background-image: image-url("top_vegetable.jpg");
+	background-size: cover;
+}
+
+.about-content{
+	margin-top: 70px;
+	border-bottom: 1px solid #F96167;
+	padding-bottom: 10px;
+}
+
+
+@media screen and (max-width: 959px) {
+  /* 959px以下に適用されるCSS（タブレット用） */
+    .skippr{
+	  	div{
+		  	max-width: 959px;
+		  	max-height: 300px;
+	  	}
+	}
+  	.top-image-text {
+		font-size: 60px;
+	}
+	.top-images {
+	    height: 300px;
+	}
+
+	.top-content-text {
+	    font-size: 15px;
+	}
+
+	.top-content {
+	    width: 200px;
+	    height: 150px;
+	}
+	.about-image{
+		display: none;
+	}
+}
+@media screen and (max-width: 480px) {
+  /* 480px以下に適用されるCSS（スマホ用） */
+
+  .skippr{
+	  	div{
+		  	max-width: 480px;
+		  	max-height: 150px;
+	  	}
+	}
+
+  .top-image-text {
+	font-size: 30px;
+    margin-bottom: 10px;
+	}
+	.top-images {
+	    height: 150px;
+	}
+
+	.top-contents {
+    flex-direction: column;
+	}
+
+	.top-content {
+	width: 100%;
+    height: 150px;
+    margin-bottom: 20px;
+	}
+
+	.introduction-text{
+		font-size: 10px;
+	}
+	.about-content{
+		margin-top: 20px;
+		border-bottom: none;
+	}
+
+	.about-image{
+		display: none;
+	}
+}

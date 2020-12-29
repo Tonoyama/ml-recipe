@@ -1,0 +1,61 @@
+inherit_from: .rubocop_todo.yml
+
+Metrics/AbcSize:
+  Max: 70
+
+Metrics/ClassLength:
+  Max: 200
+
+Metrics/CyclomaticComplexity:
+  Max: 9
+
+Metrics/MethodLength:
+  Max: 35
+
+Metrics/PerceivedComplexity:
+  Max: 11
+
+LineLength:
+  Max: 180
+
+Metrics/BlockLength:
+  Max: 65
+  Exclude:
+    - 'config/**/*'
+    - 'db/**/*'
+
+AsciiComments:
+  Enabled: false
+
+ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/MixinUsage:
+  Enabled: false
+
+Style/FileName:
+  Enabled: false
+
+Style/IfInsideElse:
+  Enabled: false
+
+Style/GuardClause:
+  MinBodyLength: 10
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Lint/NonDeterministicRequireOrder:
+  Enabled: false
+
+Lint/Void:
+  Enabled: false
+
+Naming/VariableName:
+  Enabled: false

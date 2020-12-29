@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    # 変更を保存するファイルを指定
+    volumes:
+      - .:/myapp
+    # ポートを指定
+    ports:
+      - "3000:3000"
+    #binding.pryを使うのに必要
+    tty: true
+    stdin_open: true

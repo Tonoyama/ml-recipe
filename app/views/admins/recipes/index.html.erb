@@ -1,0 +1,40 @@
+<div class="container" style="padding-bottom: 100px;">
+	<div class="row">
+		<div class="col-lg-10 offset-lg-1">
+			<span class="form-title" style="font-family: none"><%= @recipe_title %></span>
+			<% if params[:q] or params[:customer_id] or params[:tag_name] %>
+				<span style="margin-left: 10px; font-size: 15px"><%= link_to ">back", :back %></span>
+			<% end %>
+			<span style="float: right">
+				<%= search_form_for @search, url: admins_recipes_path do |f| %>
+					<%= f.search_field :title_or_introduction_or_ingredients_content_cont, class:"fa",
+						 placeholder: "\uf002 キーワード" %>
+					<%= f.submit "検索" %>
+				<% end %>
+			</span>
+			<table class="table table-bordered" style="margin-top: 30px;">
+				<tr class="table-active">
+					<th>レシピ名</th>
+					<th>作成者</th>
+					<th>更新日</th>
+					<th>ステータス</th>
+				</tr>
+				<% @recipes.each do |recipe| %>
+				<tr>
+					<td class="align-middle">
+						<%= link_to admins_recipe_path(recipe) do %><%= recipe.title %><% end %>
+					</td>
+					<td class="align-middle">
+						<%= link_to admins_customer_path(recipe.customer) do %><%= recipe.customer.account_name %>
+						<% end %>
+					</td>
+
+					<td class="align-middle"><%= recipe.updated_at.strftime('%Y/%m/%d') %></td>
+					<td class="align-middle"><%= recipe.recipe_status %></td>
+				</tr>
+				<% end %>
+			</table>
+			<%= paginate @recipes %>
+		</div>
+	</div>
+</div>

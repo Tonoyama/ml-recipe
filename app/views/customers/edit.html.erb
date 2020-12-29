@@ -1,0 +1,68 @@
+<div class="container" style="padding-bottom: 120px">
+	<span class="form-title">
+		<i class="fas fa-user"></i> Edit Profile
+	</span>
+	<span style="margin-left: 10px;font-size: 15px; padding-top: 20px;">
+		<%= link_to ">back", customer_path(current_customer) %>
+	</span>
+	<div class="row" style="margin-top: 30px;">
+		<div class="col-lg-4 col-12" style="text-align: center;">
+		<%= form_with(model: @customer, local:true, data: {"turbolinks" => false}) do |f| %>
+			<%= attachment_image_tag @customer, :profile_image, format:"jpg",
+				fallback:"logo.jpg", class:"customer-image", id:"preview-image" %>
+			<%= f.attachment_field :profile_image, id:"select-image" %>
+		</div>
+		<div class="col-lg-8 col-12">
+			<div id="error_explanation"><%= render "layouts/error", {object: @customer} %></div>
+			<table class="table table-borderless">
+				<tr>
+					<td class="align-middle" style="width: 200px;">ニックネーム</td>
+					<td class="align-middle"><%= f.text_field :account_name %></td>
+				</tr>
+				<tr>
+					<td class="align-middle" style="width: 200px;">自己紹介</td>
+					<td class="align-middle">
+						<%=f.text_area :introduction, rows:"2", style:"width:80%"%>
+					</td>
+				</tr>
+				<tr>
+					<td class="align-middle">名前</td>
+					<td class="align-middle"><%= f.text_field :name %></td>
+				</tr>
+				<tr>
+					<td class="align-middle">郵便番号</td>
+					<td class="align-middle"><%= f.text_field :postcode, id:"postcode" %></td>
+				</tr>
+				<tr>
+					<td class="align-middle">住所</td>
+					<td class="align-middle">
+						<%= f.text_field :address, style:"width:80%", id:"address" %>
+					</td>
+				</tr>
+				<tr>
+					<td class="align-middle">電話番号</td>
+					<td class="align-middle"><%= f.text_field :tel %></td>
+				</tr>
+				<tr>
+					<td class="align-middle">メールアドレス</td>
+					<% if @customer.email == "gest@gest" %>
+						<td>ゲストアカウントのため、メールアドレスの変更はできません</td>
+					<% else %>
+						<td class="align-middle"><%= f.text_field :email %></td>
+					<% end %>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="row" style="text-align: center;">
+		<div class="col-lg-12">
+			<%= f.submit class:"btn-warning btn submit-btn" %>
+		</div>
+	</div>
+	<% end %>
+	<span style="float:right">
+		<%= link_to customers_delete_path do %>
+			<span class="btn btn-danger">退会する</span>
+		<% end %>
+	</span>
+</div>
