@@ -33,27 +33,18 @@
 				</span>
 			</div>
 			<p class="introduction-text">
-			   当サイトは食材の配送サービスやレシピ投稿・閲覧をお楽しみいただけます<br>
+			   ML Recipeは、機械学習を学ぶ全ての方を応援する新しい形の情報共有サービスです。<br>
 				初めての方はまずは下記『About』にて、詳しい説明をご確認ください
 			</p>
 			<div style="padding-bottom: 30px;">
 				<% unless customer_signed_in? || admin_signed_in? %>
 					<span class="hidden-tb hidden-sp">
 						・ゲストログイン：ヘッダーの右上「ゲストログイン」よりできます<br>
-						・管理者ログイン：フッター右下のロゴマークよりできます
 					</span>
 				<% end %>
 			</div>
 
 			<div class="top-contents">
-				<%= link_to products_path, data: {"turbolinks" => false} do %>
-					<div class="top-content top-vegetable">
-						<div class="top-content-text">
-								<span>[Delivary]<br>
-								~野菜の配送サービス~</span>
-						</div>
-					</div>
-				<% end %>
 				<%= link_to about_path, data: {"turbolinks" => false} do %>
 					<div class="top-content top-about">
 						<div class="top-content-text">
@@ -122,24 +113,6 @@
 					<span style="float: right;"><%= link_to "more_Recipes > ", recipes_path %></span>
 				</div>
 
-				<span class="form-title" style="margin-right: 20px; font-size: 25px;">
-					<i class="fas fa-seedling"></i>Vegetables
-				</span>
-				<div class="product-contents" style="padding-top: 20px; justify-content: center;">
-					<% @products.shuffle.first(4).each do |product| %>
-						<div class="product-content" style="margin-bottom: -10px;">
-							<%= link_to product_path(product) do %>
-								<%= attachment_image_tag product, :product_image, format:"jpg",
-									fallback:"top_vegetable.jpg", class:"product-image" %>
-							<p>
-								<i class="fas fa-seedling"></i><%= product.name %>：<br class="br-sp"><br class="br-tb">
-								¥<%= product.price %>円
-							</p>
-							<% end %>
-						</div>
-					<% end %>
-				</div>
-				<span style="float: right;"><%= link_to "more_Vegetables > ", products_path %></span>
 			</div>
 		</div>
 	</div>

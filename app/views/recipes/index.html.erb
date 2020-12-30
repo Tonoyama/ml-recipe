@@ -18,7 +18,7 @@
 					<%= link_to ">back", recipes_path %>
 				</span>
 			<% else %>
-				<%= link_to ">人気レシピ", recipes_path(favorite: "いいね数順"), class:"font-md-sp" %>
+				<%= link_to ">人気レシピ", recipes_path(favorite: "Top Recipe"), class:"font-md-sp" %>
 			<% end %>
 			<span style="float: right">
 				<%= search_form_for @search, url: recipes_path do |f| %>

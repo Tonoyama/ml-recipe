@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Delitable</title>
+    <title>ML Recipe</title>
     <%= favicon_link_tag('favicon.ico') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -107,14 +107,7 @@
       <footer>
         <div class="container">
           <span style="font-size: 10px">Copyright(c) 2020 Delitable</span>
-          <% unless customer_signed_in? or admin_signed_in? %>
-          <div>
-            <%= link_to "", new_admin_session_path ,class:"footer-logo" %>
-            <span style="float: right;margin-top: 20px" class="font-sm">管理者ログインはこちら→</span>
-          </div>
-          <% else %>
             <span class="footer-logo" style="margin-top: 20px;"></span>
-          <% end %>
         </div>
       </footer>
     </div>
