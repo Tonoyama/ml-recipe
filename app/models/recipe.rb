@@ -15,7 +15,7 @@ class Recipe < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 30 }
   validates :introduction, presence: true, length: { maximum: 200 }
-  validates :amount, presence: true, length: { maximum: 10 }
+  validates :amount, presence: true, length: { maximum: 30 }
 
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?
