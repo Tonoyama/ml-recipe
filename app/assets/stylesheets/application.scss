@@ -35,7 +35,7 @@ html, body {
 }
 
 header{
- 	background-color: #aec1ff;
+ 	background-color: #ffffff;
  	margin-top: auto;
 }
 
@@ -51,7 +51,7 @@ header{
 }
 
 footer{
-	background-color: #FCE77D;
+	background-color: #ffffff;
 	width: 100%;
 	position: absolute;
 	bottom: 0;
@@ -67,7 +67,7 @@ footer{
 }
 
 .top-btn{
-  color: black;
+  color: #5984c0;
   float: right;
   cursor: pointer;
   margin: 20px;
@@ -81,7 +81,7 @@ footer{
 }
 
 a{
-	color: black;
+	color: #5984c0;
   &:hover{
     color: #F96167;
     text-decoration: underline;
