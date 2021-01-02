@@ -15,6 +15,11 @@
   //= require jquery
   //= require bootstrap-sprockets
   //= require_tree .
+  //= require materialize
+
+$(document).on('ready page:load', function() {
+  $.material.init();
+});
 
 $(document).on("turbolinks:load", function(){
 

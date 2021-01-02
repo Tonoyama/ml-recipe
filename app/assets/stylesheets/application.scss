@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require material_icons
  *= require_self
  */
 
@@ -88,9 +89,10 @@ a{
 }
 
 .form-title{
-	border-bottom: 2px solid #F96167;
+	border-bottom: 5px solid rgba(0, 17, 255, 0.5);
 	font-family: impact;
   font-size: 30px;
+  line-height: 1;
 }
 
 .btn-center{
