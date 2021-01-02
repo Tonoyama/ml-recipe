@@ -30,6 +30,10 @@
 				<div class="row">
 					<div class="col-lg-6">記事</div>
 					<div class="col-lg-9"><p><%= f.text_area :introduction, autocomplete: "off",rows:"3",style:"width:100%",placeholder:"Markdown記法で書いて共有" %></p></div>
+					</div>
+						<div class="row">
+					<div class="col-lg-9"><p><%= markdown(f.text_area :introduction).html_safe %></p></div>
+				</div>
 				</div>
 				<div class="row">
 					<div class="col-lg-6">実行環境</div>
