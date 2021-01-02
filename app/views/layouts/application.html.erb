@@ -39,13 +39,7 @@
                 <%= link_to "Post", new_recipe_path, class:"nav-link", data: {"turbolinks" => false} %>
               </li>
               <li class="nav-item">
-                <%= link_to "商品", products_path, class:"nav-link", data: {"turbolinks" => false} %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "カート", cart_item_confirm_path, class:"nav-link", data: {"turbolinks" => false} %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Log Out", destroy_customer_session_path,
+                <%= link_to "Sign Out", destroy_customer_session_path,
                   method: :delete, class:"nav-link", data: {"turbolinks" => false} %>
               </li>
             </ul>
@@ -79,22 +73,19 @@
           <% else %>
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
               <li class="nav-item">
-                <%= link_to "アバウト", about_path, class:"nav-link", data: {"turbolinks" => false} %>
+                <%= link_to "About", about_path, class:"nav-link", data: {"turbolinks" => false} %>
               </li>
               <li class="nav-item">
-                <%= link_to "レシピ", recipes_path, class:"nav-link", data: {"turbolinks" => false} %>
+                <%= link_to "Recipe", recipes_path, class:"nav-link", data: {"turbolinks" => false} %>
               </li>
               <li class="nav-item">
-                <%= link_to "商品", products_path, class:"nav-link", data: {"turbolinks" => false} %>
+                <%= link_to "Sign Up", new_customer_registration_path, class:"nav-link", data: {"turbolinks" => false} %>
               </li>
               <li class="nav-item">
-                <%= link_to "新規登録", new_customer_registration_path, class:"nav-link", data: {"turbolinks" => false} %>
+                <%= link_to "Sign In", new_customer_session_path, class:"nav-link", data: {"turbolinks" => false} %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログイン", new_customer_session_path, class:"nav-link", data: {"turbolinks" => false} %>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'ゲストログイン', homes_guest_sign_in_path, method: :post, class:"nav-link" %>
+                <%= link_to 'Guest', homes_guest_sign_in_path, method: :post, class:"nav-link" %>
               </li>
             </ul>
           <% end %>
@@ -106,8 +97,8 @@
 
       <footer>
         <div class="container">
-          <span style="font-size: 10px">Copyright(c) 2020 Delitable</span>
             <span class="footer-logo" style="margin-top: 20px;"></span>
+            <span style="font-size: 10px">Copyright © 2021 ML-Recipe All Rights Reserved.</span>
         </div>
       </footer>
     </div>

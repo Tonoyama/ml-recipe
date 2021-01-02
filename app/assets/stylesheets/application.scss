@@ -17,7 +17,7 @@
 
 @import "bootstrap";
 
-*{
+* {
   margin:0;
   padding: 0;
 }
@@ -31,53 +31,52 @@ html, body {
   min-height: 100vh;
   position: relative;
   background-color: white;
-  padding-top: 20px;
 }
 
-header{
+header {
  	background-color: #ffffff;
  	margin-top: auto;
 }
 
-.navbar-nav{
-  li{
+.navbar-nav {
+  li {
     margin-right: 15px;
   }
 }
 
-.navbar-toggler-icon{
+.navbar-toggler-icon {
   background-image: image-url("menu.jpeg");
   border-radius: 5px;
 }
 
-footer{
+footer {
 	background-color: #ffffff;
 	width: 100%;
 	position: absolute;
-	bottom: 0;
-	margin-top: 30px;
+  bottom: 0;
+  padding-bottom: 1em;
 }
 
-.footer-logo{
+.footer-logo {
 	float: right;
-  background-image: image-url("logo.jpg");
+  background-image: image-url("logo-sm.png");
   background-size: cover;
   height: 100px;
   width: 200px;
 }
 
-.top-btn{
+.top-btn {
   color: #5984c0;
   float: right;
   cursor: pointer;
   margin: 20px;
 }
 
-.navbar-brand{
-	background-image: image-url("logo.jpg");
+.navbar-brand {
+	background-image: image-url("top-logo-sm.jpg");
   background-size: cover;
-  width: 220px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
 }
 
 a{
@@ -88,24 +87,34 @@ a{
   }
 }
 
-.form-title{
-	border-bottom: 5px solid rgba(0, 17, 255, 0.5);
+.top-profile-image{
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	object-fit: contain;
+	border: 3px solid #5984c0;
+	background-color: #F5F5F5
+}
+
+.form-title {
+	border-bottom: 5px solid #6daaff;
 	font-family: impact;
   font-size: 30px;
   line-height: 1;
+  margin-left: 1em;
 }
 
-.btn-center{
+.btn-center {
   margin-top: 20px;
   padding: 10px;
 }
 
-.submit-btn{
+.submit-btn {
   width: 100px;
   height: 40px;
 }
 
-.submit-btn-sm{
+.submit-btn-sm {
   width: 60px;
   height: 32px;
   font-size: 15px;
@@ -116,7 +125,7 @@ textarea {
     padding: 3px;
 }
 
-.recipe-tag{
+.recipe-tag {
   background-color: #ffc107;
   border-radius: 5px;
   margin: 10px;

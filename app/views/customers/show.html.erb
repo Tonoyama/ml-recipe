@@ -10,7 +10,7 @@
 	<div class="row" style="margin-top: 30px;">
 		<div class="col-lg-4 col-12" style="text-align: center;">
 			<%= attachment_image_tag @customer, :profile_image, format:"jpg",
-				fallback:"logo.jpg", class:"customer-image" %>
+				fallback:"account.png", class:"customer-image" %>
 			<div style="margin:10px 0" class="hidden-pc">
 				<%= link_to customer_follows_path(@customer), style:"margin-right: 20px" do %>
 					<%= @customer.following_customer.count %>フォロー
@@ -79,10 +79,6 @@
 			<% if @customer == current_customer %>
 				<%= link_to "プロフィール編集", edit_customer_path(current_customer),
 					class:"btn btn-warning mr-w",  data: {"turbolinks" => false}  %>
-				<%= link_to "配送先一覧", customers_shippings_path,
-					class:"btn btn-warning" %>
-				<%= link_to "注文一覧", customers_orders_path,
-					class:"btn btn-warning mr-w" %>
 			<% end %>
 			</div>
 		</div>
