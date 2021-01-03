@@ -30,12 +30,11 @@ html, body {
   width: 100%;
   min-height: 100vh;
   position: relative;
-  background-color: white;
+  background-color: #ffffff;
 }
 
 header {
  	background-color: #ffffff;
- 	margin-top: auto;
 }
 
 .navbar-nav {
@@ -69,7 +68,6 @@ footer {
   color: #5984c0;
   float: right;
   cursor: pointer;
-  margin: 20px;
 }
 
 .navbar-brand {
@@ -82,7 +80,7 @@ footer {
 a{
 	color: #5984c0;
   &:hover{
-    color: #F96167;
+    color: #13325e;
     text-decoration: underline;
   }
 }
@@ -126,7 +124,7 @@ textarea {
 }
 
 .recipe-tag {
-  background-color: #ffc107;
+  background-color: #079cff;
   border-radius: 5px;
   margin: 10px;
   padding: 5px;
@@ -181,8 +179,8 @@ textarea {
 
 .page-item.active .page-link {
     color: black;
-    background-color: #FCE77D;
-    border-color: #FCE77D;
+    background-color: #7dd4fc;
+    border-color: #7dd4fc;
 }
 .page-link {
     color: black;
@@ -192,14 +190,14 @@ textarea {
 }
 
 input:focus{
-  border: 1.5px solid #F96167;
+  border: 1.5px solid #618af9;
   outline: none;
   border-radius: 0.2em;
   padding: 0.5px;
 }
 
 textarea:focus{
-  border: 1.5px solid #F96167;
+  border: 1.5px solid #5644ff;
   outline: none;
   border-radius: 0.2em;
   padding: 2.5px;
@@ -270,7 +268,7 @@ textarea:focus{
   }
 
   .form-title{
-  border-bottom: 1px solid #F96167;
+  border-bottom: 1px solid #61a3f9;
   font-size: 20px;
   }
 
