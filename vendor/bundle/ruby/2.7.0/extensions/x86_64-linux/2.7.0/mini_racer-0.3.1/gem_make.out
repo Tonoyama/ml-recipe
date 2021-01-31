@@ -1,0 +1,65 @@
+current directory: /home/yudai/Dev/ruby/rails/ml-recipe/vendor/bundle/ruby/2.7.0/gems/mini_racer-0.3.1/ext/mini_racer_extension
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20210201-2073306-1evx35y.rb extconf.rb
+checking for -lpthread... yes
+creating Makefile
+
+current directory: /home/yudai/Dev/ruby/rails/ml-recipe/vendor/bundle/ruby/2.7.0/gems/mini_racer-0.3.1/ext/mini_racer_extension
+make "DESTDIR=" clean
+
+current directory: /home/yudai/Dev/ruby/rails/ml-recipe/vendor/bundle/ruby/2.7.0/gems/mini_racer-0.3.1/ext/mini_racer_extension
+make "DESTDIR="
+compiling mini_racer_extension.cc
+mini_racer_extension.cc: In function ‘v8::Local<v8::Value> convert_ruby_to_v8(v8::Isolate*, v8::Local<v8::Context>, VALUE)’:
+mini_racer_extension.cc:542:96: warning: ignoring return value of ‘v8::Maybe<bool> v8::Object::Set(v8::Local<v8::Context>, uint32_t, v8::Local<v8::Value>)’, declared with attribute warn_unused_result [-Wunused-result]
+  542 |             array->Set(context, i, convert_ruby_to_v8(isolate, context, rb_ary_entry(value, i)));
+      |                                                                                                ^
+In file included from mini_racer_extension.cc:5:
+/home/yudai/Dev/ruby/rails/ml-recipe/vendor/bundle/ruby/2.7.0/gems/libv8-8.4.255.0-x86_64-linux/vendor/v8/include/v8.h:3667:37: note: declared here
+ 3667 |   V8_WARN_UNUSED_RESULT Maybe<bool> Set(Local<Context> context, uint32_t index,
+      |                                     ^~~
+mini_racer_extension.cc:552:78: warning: ignoring return value of ‘v8::Maybe<bool> v8::Object::Set(v8::Local<v8::Context>, v8::Local<v8::Value>, v8::Local<v8::Value>)’, declared with attribute warn_unused_result [-Wunused-result]
+  552 |                   convert_ruby_to_v8(isolate, context, rb_ary_entry(pair, 1)));
+      |                                                                              ^
+In file included from mini_racer_extension.cc:5:
+/home/yudai/Dev/ruby/rails/ml-recipe/vendor/bundle/ruby/2.7.0/gems/libv8-8.4.255.0-x86_64-linux/vendor/v8/include/v8.h:3664:37: note: declared here
+ 3664 |   V8_WARN_UNUSED_RESULT Maybe<bool> Set(Local<Context> context,
+      |                                     ^~~
+mini_racer_extension.cc: In function ‘void* gvl_ruby_callback(void*)’:
+mini_racer_extension.cc:1082:94: warning: ‘VALUE ruby::backward::cxxanyargs::rb_rescue2(VALUE (*)(...), VALUE, VALUE (*)(...), VALUE, ...)’ is deprecated: Use of ANYARGS in this function is deprecated [-Wdeprecated-declarations]
+ 1082 |             (VALUE(*)(...))&rescue_callback, (VALUE)(&callback_data), rb_eException, (VALUE)0);
+      |                                                                                              ^
+In file included from /usr/include/ruby-2.7.0/ruby/ruby.h:2863,
+                 from /usr/include/ruby-2.7.0/ruby.h:33,
+                 from mini_racer_extension.cc:2:
+/usr/include/ruby-2.7.0/ruby/backward/cxxanyargs.hpp:222:1: note: declared here
+  222 | rb_rescue2(type *q, VALUE w, type *e, VALUE r, ...)
+      | ^~~~~~~~~~
+mini_racer_extension.cc:1082:94: warning: ‘VALUE ruby::backward::cxxanyargs::rb_rescue2(VALUE (*)(...), VALUE, VALUE (*)(...), VALUE, ...)’ is deprecated: Use of ANYARGS in this function is deprecated [-Wdeprecated-declarations]
+ 1082 |             (VALUE(*)(...))&rescue_callback, (VALUE)(&callback_data), rb_eException, (VALUE)0);
+      |                                                                                              ^
+In file included from /usr/include/ruby-2.7.0/ruby/ruby.h:2863,
+                 from /usr/include/ruby-2.7.0/ruby.h:33,
+                 from mini_racer_extension.cc:2:
+/usr/include/ruby-2.7.0/ruby/backward/cxxanyargs.hpp:222:1: note: declared here
+  222 | rb_rescue2(type *q, VALUE w, type *e, VALUE r, ...)
+      | ^~~~~~~~~~
+mini_racer_extension.cc: In function ‘VALUE rb_external_function_notify_v8(VALUE)’:
+mini_racer_extension.cc:1161:46: warning: ignoring return value of ‘v8::Maybe<bool> v8::Object::Set(v8::Local<v8::Context>, v8::Local<v8::Value>, v8::Local<v8::Value>)’, declared with attribute warn_unused_result [-Wunused-result]
+ 1161 |                             .ToLocalChecked());
+      |                                              ^
+In file included from mini_racer_extension.cc:5:
+/home/yudai/Dev/ruby/rails/ml-recipe/vendor/bundle/ruby/2.7.0/gems/libv8-8.4.255.0-x86_64-linux/vendor/v8/include/v8.h:3664:37: note: declared here
+ 3664 |   V8_WARN_UNUSED_RESULT Maybe<bool> Set(Local<Context> context,
+      |                                     ^~~
+mini_racer_extension.cc:1186:58: warning: ignoring return value of ‘v8::Maybe<bool> v8::Object::Set(v8::Local<v8::Context>, v8::Local<v8::Value>, v8::Local<v8::Value>)’, declared with attribute warn_unused_result [-Wunused-result]
+ 1186 |                                         .ToLocalChecked());
+      |                                                          ^
+In file included from mini_racer_extension.cc:5:
+/home/yudai/Dev/ruby/rails/ml-recipe/vendor/bundle/ruby/2.7.0/gems/libv8-8.4.255.0-x86_64-linux/vendor/v8/include/v8.h:3664:37: note: declared here
+ 3664 |   V8_WARN_UNUSED_RESULT Maybe<bool> Set(Local<Context> context,
+      |                                     ^~~
+linking shared-object mini_racer_extension.so
+
+current directory: /home/yudai/Dev/ruby/rails/ml-recipe/vendor/bundle/ruby/2.7.0/gems/mini_racer-0.3.1/ext/mini_racer_extension
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 mini_racer_extension.so ./.gem.20210201-2073306-6mn9tx

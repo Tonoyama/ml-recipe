@@ -190,6 +190,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
+    libv8 (8.4.255.0)
     libv8 (8.4.255.0-x86_64-darwin-20)
     libv8 (8.4.255.0-x86_64-linux)
     listen (3.1.5)
@@ -399,6 +400,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  ruby
   x86_64-darwin-20
   x86_64-linux
 
@@ -458,7 +460,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.5.7p206
+   ruby 2.7.0p0
 
 BUNDLED WITH
    2.2.4

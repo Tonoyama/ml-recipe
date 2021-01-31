@@ -1,0 +1,24 @@
+current directory: /home/yudai/Dev/ruby/rails/ml-recipe/vendor/bundle/ruby/2.7.0/gems/redcarpet-2.3.0/ext/redcarpet
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20210201-2114450-1ta6b61.rb extconf.rb
+creating Makefile
+
+current directory: /home/yudai/Dev/ruby/rails/ml-recipe/vendor/bundle/ruby/2.7.0/gems/redcarpet-2.3.0/ext/redcarpet
+make "DESTDIR=" clean
+
+current directory: /home/yudai/Dev/ruby/rails/ml-recipe/vendor/bundle/ruby/2.7.0/gems/redcarpet-2.3.0/ext/redcarpet
+make "DESTDIR="
+compiling autolink.c
+compiling buffer.c
+compiling houdini_href_e.c
+compiling houdini_html_e.c
+compiling html.c
+compiling html_smartypants.c
+compiling markdown.c
+compiling rc_markdown.c
+compiling rc_render.c
+compiling stack.c
+linking shared-object redcarpet.so
+
+current directory: /home/yudai/Dev/ruby/rails/ml-recipe/vendor/bundle/ruby/2.7.0/gems/redcarpet-2.3.0/ext/redcarpet
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 redcarpet.so ./.gem.20210201-2114450-1ooitzc
