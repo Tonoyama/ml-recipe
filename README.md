@@ -16,4 +16,10 @@
 
 <img width="1052" alt="スクリーンショット 2022-06-07 0 35 22" src="https://user-images.githubusercontent.com/33394165/172194550-e9f16dae-aa37-43d5-8b51-9e959d0ea1ee.png">
 
+## セットアップ
 
+起動
+
+```
+docker-compose up
+```
